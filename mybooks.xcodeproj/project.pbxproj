@@ -11,6 +11,7 @@
 		FC175B352B80D659007993B2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B342B80D659007993B2 /* UIColor+.swift */; };
 		FC175B372B80D875007993B2 /* MBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B362B80D875007993B2 /* MBTextField.swift */; };
 		FC175B392B80D8BD007993B2 /* MBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B382B80D8BD007993B2 /* MBButton.swift */; };
+		FC175B3E2B80DE39007993B2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B3D2B80DE39007993B2 /* SignUpView.swift */; };
 		FC6150AD2B80C95D0006A700 /* mybooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AC2B80C95D0006A700 /* mybooksApp.swift */; };
 		FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AE2B80C95D0006A700 /* LoginView.swift */; };
 		FC6150B12B80C95E0006A700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6150B02B80C95E0006A700 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		FC175B342B80D659007993B2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		FC175B362B80D875007993B2 /* MBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTextField.swift; sourceTree = "<group>"; };
 		FC175B382B80D8BD007993B2 /* MBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButton.swift; sourceTree = "<group>"; };
+		FC175B3D2B80DE39007993B2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		FC6150A92B80C95D0006A700 /* mybooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mybooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6150AC2B80C95D0006A700 /* mybooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mybooksApp.swift; sourceTree = "<group>"; };
 		FC6150AE2B80C95D0006A700 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FC175B3C2B80DE2C007993B2 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				FC6150AE2B80C95D0006A700 /* LoginView.swift */,
+				FC175B3D2B80DE39007993B2 /* SignUpView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		FC6150A02B80C95D0006A700 = {
 			isa = PBXGroup;
 			children = (
@@ -86,9 +97,9 @@
 		FC6150AB2B80C95D0006A700 /* mybooks */ = {
 			isa = PBXGroup;
 			children = (
-				FC175B1D2B80D261007993B2 /* Common */,
 				FC6150AC2B80C95D0006A700 /* mybooksApp.swift */,
-				FC6150AE2B80C95D0006A700 /* LoginView.swift */,
+				FC175B1D2B80D261007993B2 /* Common */,
+				FC175B3C2B80DE2C007993B2 /* Features */,
 				FC6150B02B80C95E0006A700 /* Assets.xcassets */,
 				FC6150B22B80C95E0006A700 /* Preview Content */,
 			);
@@ -176,6 +187,7 @@
 				FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */,
 				FC175B352B80D659007993B2 /* UIColor+.swift in Sources */,
 				FC6150AD2B80C95D0006A700 /* mybooksApp.swift in Sources */,
+				FC175B3E2B80DE39007993B2 /* SignUpView.swift in Sources */,
 				FC175B332B80D5FB007993B2 /* Color+.swift in Sources */,
 				FC175B392B80D8BD007993B2 /* MBButton.swift in Sources */,
 				FC175B372B80D875007993B2 /* MBTextField.swift in Sources */,
