@@ -14,8 +14,7 @@ struct mybooksApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let viewModel = LoginViewModel()
-            LoginView(viewModel: viewModel)
+            LoginView()
         }
     }
 }

@@ -8,6 +8,11 @@
 import FirebaseAuth
 import Foundation
 
-class SignUpViewModel {
+class SignUpViewModel: ObservableObject {
     
+    func signUp(with email: String, and password: String) {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            
+        }
+    }
 }

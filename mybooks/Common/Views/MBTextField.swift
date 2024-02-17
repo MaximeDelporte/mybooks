@@ -11,7 +11,7 @@ import SwiftUI
 struct MBTextField: View {
     
     var placeholder: String
-    @State var value: String
+    @Binding var value: String
     var isSecure: Bool = false
     
     var body: some View {

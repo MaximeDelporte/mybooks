@@ -19,6 +19,8 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
+    @ObservedObject private var viewModel = SignUpViewModel()
+    
     var body: some View {
         VStack(spacing: 16, content: {
             Text("Sign Up")
@@ -27,18 +29,16 @@ struct SignUpView: View {
             
             Spacer()
             
-            MBTextField(placeholder: "Email", value: email)
+            MBTextField(placeholder: "Email", value: $email)
             
-            MBTextField(placeholder: "Password", value: password, isSecure: true)
+            MBTextField(placeholder: "Password", value: $password, isSecure: true)
             
-            MBTextField(placeholder: "Confirm Password", value: confirmPassword, isSecure: true)
+            MBTextField(placeholder: "Confirm Password", value: $confirmPassword, isSecure: true)
             
             Spacer()
             
             MBButton(title: "Sign up", style: .primary, action: {
-                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                  // ...
-                }
+                
             })
             .padding(.bottom, 16)
         })

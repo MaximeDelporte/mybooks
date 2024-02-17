@@ -5,6 +5,7 @@
 //  Created by Maxime Delporte on 17/02/2024.
 //
 
+import Combine
 import FirebaseAuth
 import SwiftUI
 
@@ -15,13 +16,12 @@ struct LoginView: View {
         case password
     }
     
-    @State private var email: String = ""
-    @State private var password: String = ""
-    
     @State private var path: NavigationPath = .init()
     @FocusState private var focusedField: LoginField?
     
-    @ObservedObject var viewModel: LoginViewModel
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @ObservedObject private var viewModel = LoginViewModel()
     
     var body: some View {
         NavigationStack(path: $path, root: {
@@ -42,12 +42,15 @@ struct LoginView: View {
                 VStack {
                     Spacer()
                     
-                    MBTextField(placeholder: "Email address", value: email)
+                    MBTextField(placeholder: "Email address", value: $email)
+                        .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
                         .focused($focusedField, equals: .email)
                         .submitLabel(.next)
                         .padding(.bottom, 18)
                     
-                    MBTextField(placeholder: "Password", value: password)
+                    MBTextField(placeholder: "Password", value: $password, isSecure: true)
+                        .textInputAutocapitalization(.never)
                         .focused($focusedField, equals: .password)
                         .submitLabel(.join)
                     
@@ -66,17 +69,15 @@ struct LoginView: View {
                     case .email:
                         focusedField = .password
                     default:
-                        hideKeyboard()
-                        viewModel.login(with: email, and: password)
+                        login()
                     }
                 }
                 
                 VStack {
-                    MBButton(title: "Log In", style: .primary, action: {
-                        hideKeyboard()
-                        viewModel.login(with: email, and: password)
-                    })
-                    .padding(.bottom, 4)
+                    MBButton(title: "Log In", style: .primary, action: login)
+                        .opacity(email.isEmpty || password.isEmpty ? 0.5 : 1.0)
+                        .disabled(email.isEmpty || password.isEmpty)
+                        .padding(.bottom, 4)
                     
                     MBButton(title: "New user? Sign Up", style: .secondary, action: {
                         path.append(SignUpView.screenName)
@@ -96,9 +97,14 @@ struct LoginView: View {
             }
         })
     }
+    
+    private func login() {
+        if email.isEmpty || password.isEmpty { return }
+        hideKeyboard()
+        viewModel.login(with: email, and: password)
+    }
 }
 
 #Preview {
-    let viewModel = LoginViewModel()
-    return LoginView(viewModel: viewModel)
+    LoginView()
 }
