@@ -5,6 +5,9 @@
 //  Created by Maxime Delporte on 17/02/2024.
 //
 
+import AuthenticationServices
+import FirebaseAuth
+import FirebaseCore
 import Foundation
 import SwiftUI
 
@@ -33,7 +36,9 @@ struct SignUpView: View {
             Spacer()
             
             MBButton(title: "Sign up", style: .primary, action: {
-                
+                Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                  // ...
+                }
             })
             .padding(.bottom, 16)
         })
