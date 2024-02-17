@@ -13,35 +13,32 @@ struct LoginView: View {
     @State var password: String = ""
     
     var body: some View {
-        ZStack {
-            ZStack {
+        VStack {
+            ZStack(alignment: .bottomLeading, content: {
                 Image("library")
                     .resizable()
                     .ignoresSafeArea()
-                    .blur(radius: 28.0, opaque: true)
-                
-                Color.white.opacity(0.36).ignoresSafeArea()
-            }
-            
-            VStack(alignment: .center, content: {
-                
-                Spacer()
+                    .blur(radius: 4.0, opaque: true)
                 
                 Text("Welcome back")
-                    .font(.system(size: 32, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.primary)
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 32)
+                    .padding()
+            })
+            
+            VStack(alignment: .center, content: {
+                Spacer()
                
                 MBTextField(placeholder: "Email address", value: email)
-                    .padding(.bottom, 16)
+                    .padding(.bottom, 18)
                 
                 MBTextField(placeholder: "Password", value: password)
                 
                 Spacer()
                 
                 MBButton(title: "Log In", style: .primary, action: {})
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 4)
                 
                 MBButton(title: "New user? Sign Up", style: .secondary, action: {})
             })
