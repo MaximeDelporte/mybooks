@@ -87,7 +87,6 @@ struct LoginView: View {
                 .padding(.horizontal, 22)
             }
             .navigationDestination(for: String.self, destination: { screenName in
-                let _ = print("screenName: \(screenName)")
                 if screenName == SignUpView.screenName {
                     SignUpView()
                 }
