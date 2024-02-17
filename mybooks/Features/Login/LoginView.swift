@@ -36,6 +36,7 @@ struct LoginView: View {
                         .font(.system(size: 40, weight: .bold, design: .rounded))
                         .foregroundStyle(.white)
                         .frame(alignment: .leading)
+                        .shadow(color: .black, radius: 2, x: 0, y: 2)
                         .padding()
                 })
                 
