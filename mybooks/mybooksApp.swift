@@ -2,7 +2,7 @@
 //  mybooksApp.swift
 //  mybooks
 //
-//  Created by afx on 17/02/2024.
+//  Created by Maxime Delporte on 17/02/2024.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct mybooksApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

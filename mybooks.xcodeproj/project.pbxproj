@@ -7,16 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC175B332B80D5FB007993B2 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B322B80D5FB007993B2 /* Color+.swift */; };
+		FC175B352B80D659007993B2 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B342B80D659007993B2 /* UIColor+.swift */; };
+		FC175B372B80D875007993B2 /* MBTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B362B80D875007993B2 /* MBTextField.swift */; };
+		FC175B392B80D8BD007993B2 /* MBButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC175B382B80D8BD007993B2 /* MBButton.swift */; };
 		FC6150AD2B80C95D0006A700 /* mybooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AC2B80C95D0006A700 /* mybooksApp.swift */; };
-		FC6150AF2B80C95D0006A700 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AE2B80C95D0006A700 /* ContentView.swift */; };
+		FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AE2B80C95D0006A700 /* LoginView.swift */; };
 		FC6150B12B80C95E0006A700 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6150B02B80C95E0006A700 /* Assets.xcassets */; };
 		FC6150B42B80C95E0006A700 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC6150B32B80C95E0006A700 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC175B322B80D5FB007993B2 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		FC175B342B80D659007993B2 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		FC175B362B80D875007993B2 /* MBTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBTextField.swift; sourceTree = "<group>"; };
+		FC175B382B80D8BD007993B2 /* MBButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBButton.swift; sourceTree = "<group>"; };
 		FC6150A92B80C95D0006A700 /* mybooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mybooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6150AC2B80C95D0006A700 /* mybooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mybooksApp.swift; sourceTree = "<group>"; };
-		FC6150AE2B80C95D0006A700 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FC6150AE2B80C95D0006A700 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FC6150B02B80C95E0006A700 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC6150B32B80C95E0006A700 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,6 +40,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FC175B1D2B80D261007993B2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FC175B1F2B80D26A007993B2 /* Extensions */,
+				FC175B1E2B80D265007993B2 /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FC175B1E2B80D265007993B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC175B362B80D875007993B2 /* MBTextField.swift */,
+				FC175B382B80D8BD007993B2 /* MBButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC175B1F2B80D26A007993B2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FC175B322B80D5FB007993B2 /* Color+.swift */,
+				FC175B342B80D659007993B2 /* UIColor+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FC6150A02B80C95D0006A700 = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +86,9 @@
 		FC6150AB2B80C95D0006A700 /* mybooks */ = {
 			isa = PBXGroup;
 			children = (
+				FC175B1D2B80D261007993B2 /* Common */,
 				FC6150AC2B80C95D0006A700 /* mybooksApp.swift */,
-				FC6150AE2B80C95D0006A700 /* ContentView.swift */,
+				FC6150AE2B80C95D0006A700 /* LoginView.swift */,
 				FC6150B02B80C95E0006A700 /* Assets.xcassets */,
 				FC6150B22B80C95E0006A700 /* Preview Content */,
 			);
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC6150AF2B80C95D0006A700 /* ContentView.swift in Sources */,
+				FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */,
+				FC175B352B80D659007993B2 /* UIColor+.swift in Sources */,
 				FC6150AD2B80C95D0006A700 /* mybooksApp.swift in Sources */,
+				FC175B332B80D5FB007993B2 /* Color+.swift in Sources */,
+				FC175B392B80D8BD007993B2 /* MBButton.swift in Sources */,
+				FC175B372B80D875007993B2 /* MBTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
