@@ -68,7 +68,9 @@ struct SignUpView: View {
     private func signUp() {
         if signUpButtonIsDisabled { return }
         hideKeyboard()
-        viewModel.signUp(with: email, and: password)
+        Task {
+            try await viewModel.signUp(with: email, and: password)
+        }
     }
 }
 

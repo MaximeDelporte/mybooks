@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
 import Foundation
 
 class SignUpViewModel: ObservableObject {
@@ -13,20 +14,17 @@ class SignUpViewModel: ObservableObject {
     @Published var errorIsVisible = false
     @Published var errorString: String = ""
     
-    func signUp(with email: String, and password: String) {
+    func signUp(with email: String, and password: String) async throws {
         errorIsVisible = false
         
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let self = self else { return }
-            
-            if let error {
-                errorIsVisible = true
-                errorString = error.localizedDescription
-            } else {
-                print(authResult)
-                print("user: \(authResult?.user)")
-                print("credential: \(authResult?.credential)")
-            }
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            let user = User(id: result.user.uid, firstName: "", lastName: "", email: email, books: [])
+            let encodedUser = try Firestore.Encoder().encode(user)
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
+        } catch {
+            errorIsVisible = true
+            errorString = error.localizedDescription
         }
     }
 }
