@@ -21,7 +21,8 @@ struct LoginView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
-    @ObservedObject private var viewModel = LoginViewModel()
+    
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationStack(path: $path, root: {
@@ -59,7 +60,7 @@ struct LoginView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                         .font(.system(size: 13, weight: .regular, design: .rounded))
                         .foregroundStyle(.red)
-                        .opacity(viewModel.userIsUnknown ? 1 : 0)
+                        .opacity(viewModel.showLoginError ? 1 : 0)
                     
                     Spacer()
                 }
@@ -93,7 +94,7 @@ struct LoginView: View {
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                viewModel.userIsUnknown = false
+                viewModel.showLoginError = false
             }
         })
     }
@@ -101,7 +102,9 @@ struct LoginView: View {
     private func login() {
         if email.isEmpty || password.isEmpty { return }
         hideKeyboard()
-        viewModel.login(with: email, and: password)
+        Task {
+            try await viewModel.login(with: email, and: password)
+        }
     }
 }
 

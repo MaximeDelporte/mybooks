@@ -19,6 +19,10 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
+    // MARK: - Private Properties
+    
     private var signUpButtonIsDisabled: Bool {
         let fieldsAreEmpties = email.isEmpty || password.isEmpty || confirmPassword.isEmpty
         if fieldsAreEmpties { return true }
@@ -27,7 +31,9 @@ struct SignUpView: View {
         return fieldsAreEmpties || passwordNotMatch
     }
     
-    @ObservedObject private var viewModel = SignUpViewModel()
+    private var errorMessage: String {
+        viewModel.signUpErrorString ?? ""
+    }
     
     var body: some View {
         VStack(spacing: 16, content: {
@@ -49,11 +55,11 @@ struct SignUpView: View {
             
             Spacer()
             
-            Text(viewModel.errorString)
+            Text(errorMessage)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .font(.system(size: 13, weight: .regular, design: .rounded))
                 .foregroundStyle(.red)
-                .opacity(viewModel.errorIsVisible ? 1.0 : 0.0)
+                .opacity(errorMessage.isEmpty ? 0.0 : 1.0)
             
             MBButton(title: "Sign up", style: .primary, action: {
                 signUp()
@@ -62,6 +68,9 @@ struct SignUpView: View {
             .disabled(signUpButtonIsDisabled)
             .padding(.bottom, 16)
         })
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+            viewModel.signUpErrorString = nil
+        }
         .padding(.horizontal, 12)
     }
     
