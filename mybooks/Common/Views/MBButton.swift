@@ -32,15 +32,6 @@ enum MBButtonStyle {
             return .primary
         }
     }
-    
-    var fontSize: CGFloat {
-        switch self {
-        case .primary, .secondary:
-            return 22.0
-        case .text:
-            return 16.0
-        }
-    }
 }
 
 struct MBButton: View {
@@ -56,7 +47,7 @@ struct MBButton: View {
                 .frame(maxWidth: .infinity)
                 .background(style.backgroundColor)
                 .foregroundColor(style.foregroundColor)
-                .font(.system(size: style.fontSize, weight: .semibold))
+                .font(.system(size: 16.0, weight: .semibold))
         })
         .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8.0, height: 8.0)))
     }

@@ -50,17 +50,23 @@ struct LoginView: View {
                         .focused($focusedField, equals: .email)
                         .submitLabel(.next)
                         .padding(.bottom, 18)
+                        .onChange(of: email, {
+                            self.viewModel.showLoginError = false
+                        })
                     
                     MBTextField(placeholder: "Password", value: $password, isSecure: true)
                         .textInputAutocapitalization(.never)
                         .focused($focusedField, equals: .password)
                         .submitLabel(.join)
+                        .onChange(of: password, {
+                            self.viewModel.showLoginError = false
+                        })
                     
                     Text("L'email ou le mot de passe ne sont pas corrects.")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .font(.system(size: 13, weight: .regular, design: .rounded))
                         .foregroundStyle(.red)
-                        .opacity(viewModel.showLoginError ? 1 : 0)
+                        .opacity(self.viewModel.showLoginError ? 1 : 0)
                     
                     Spacer()
                 }
@@ -69,14 +75,14 @@ struct LoginView: View {
                 .onSubmit {
                     switch focusedField {
                     case .email:
-                        focusedField = .password
+                        self.focusedField = .password
                     default:
-                        login()
+                        self.login()
                     }
                 }
                 
                 VStack {
-                    MBButton(title: "Log In", style: .primary, action: login)
+                    MBButton(title: "Log In", style: .primary, action: self.login)
                         .opacity(email.isEmpty || password.isEmpty ? 0.5 : 1.0)
                         .disabled(email.isEmpty || password.isEmpty)
                         .padding(.bottom, 4)
@@ -95,7 +101,7 @@ struct LoginView: View {
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                viewModel.showLoginError = false
+                self.viewModel.showLoginError = false
             }
         })
     }
@@ -104,7 +110,7 @@ struct LoginView: View {
         if email.isEmpty || password.isEmpty { return }
         hideKeyboard()
         Task {
-            try await viewModel.login(with: email, and: password)
+            try await self.viewModel.login(with: email, and: password)
         }
     }
 }

@@ -15,7 +15,18 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Spacer()
+            
+            MBButton(title: "Log out", style: .secondary, action: {
+                Task {
+                    viewModel.signOut()
+                }
+            })
+            
+            MBButton(title: "Delete account", style: .text, action: {
+                // TODO: Delete Account
+            })
         }
+        .padding(.horizontal, 22.0)
     }
 }
 
