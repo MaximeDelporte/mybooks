@@ -81,7 +81,7 @@ struct LoginView: View {
                         .disabled(email.isEmpty || password.isEmpty)
                         .padding(.bottom, 4)
                     
-                    MBButton(title: "New user? Sign Up", style: .secondary, action: {
+                    MBButton(title: "New user? Sign Up", style: .text, action: {
                         path.append(SignUpView.screenName)
                     })
                     .padding(.bottom, 8)
@@ -91,6 +91,7 @@ struct LoginView: View {
             .navigationDestination(for: String.self, destination: { screenName in
                 if screenName == SignUpView.screenName {
                     SignUpView()
+                        .environmentObject(viewModel)
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
@@ -110,4 +111,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environmentObject(AuthViewModel())
 }

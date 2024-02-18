@@ -10,7 +10,16 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
-        Text("SettingsView")
+        VStack {
+            Spacer()
+        }
     }
+}
+
+#Preview {
+    SettingsView()
+        .environmentObject(AuthViewModel())
 }

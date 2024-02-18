@@ -33,6 +33,7 @@ fileprivate struct AuthenticationView: View {
         Group {
             if viewModel.userSession != nil {
                 HomeView()
+                    .environmentObject(viewModel)
             } else {
                 LoginView()
                     .environmentObject(viewModel)

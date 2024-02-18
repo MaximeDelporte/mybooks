@@ -11,12 +11,15 @@ import SwiftUI
 enum MBButtonStyle {
     case primary
     case secondary
+    case text
     
     var backgroundColor: Color {
         switch self {
         case .primary:
             return .MBBlue
         case .secondary:
+            return .MBGray
+        case .text:
             return .clear
         }
     }
@@ -25,16 +28,16 @@ enum MBButtonStyle {
         switch self {
         case .primary:
             return .white
-        case .secondary:
+        case .secondary, .text:
             return .primary
         }
     }
     
     var fontSize: CGFloat {
         switch self {
-        case .primary:
+        case .primary, .secondary:
             return 22.0
-        case .secondary:
+        case .text:
             return 16.0
         }
     }

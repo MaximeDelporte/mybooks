@@ -13,6 +13,8 @@ struct HomeView: View {
     @State var tabSelection: Int = 0
     @State var path: NavigationPath = .init()
     
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     private let navTitles = ["My Books", "Settings"]
     
     var body: some View {
@@ -39,6 +41,7 @@ struct HomeView: View {
                                     Image("settings-icon")
                                 })
                             }
+                            .environmentObject(viewModel)
                     }
                 }
             }
@@ -58,4 +61,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(AuthViewModel())
 }

@@ -15,13 +15,19 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     
-    @Published var showLoginError: Bool = false
+    // MARK: - Error Management
     
+    @Published var showLoginError: Bool = false
     @Published var signUpErrorString: String?
     
     init() {
         self.userSession = Auth.auth().currentUser
     }
+}
+
+// MARK: - Convenience Methods
+
+extension AuthViewModel {
     
     func login(with email: String, and password: String) async throws {
         do {
