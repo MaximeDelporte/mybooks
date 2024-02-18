@@ -51,4 +51,14 @@ extension AuthViewModel {
             print("ERROR - \(error.localizedDescription)")
         }
     }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("ERROR - \(error.localizedDescription)")
+        }
+    }
 }
