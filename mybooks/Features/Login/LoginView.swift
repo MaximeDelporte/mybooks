@@ -27,7 +27,7 @@ struct LoginView: View {
         NavigationStack(path: $path, root: {
             VStack {
                 ZStack(alignment: .bottomLeading, content: {
-                    Image("library")
+                    Image("library-main")
                         .resizable()
                         .ignoresSafeArea()
                         .blur(radius: 4.0, opaque: true)
