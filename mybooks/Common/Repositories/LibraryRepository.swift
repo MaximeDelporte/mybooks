@@ -15,7 +15,7 @@ class LibraryRepository {
     
     func fetchBooks() async {
         guard let user = Auth.auth().currentUser,
-              let snapshot = try? await db.collection("books").document(user.uid).getDocument() else { return }
-        print("snapshot: \(snapshot)")
+              let snapshot = try? await db.collection("books").getDocuments() else { return }
+        print("SNAPSHOT: \(snapshot)")
     }
 }

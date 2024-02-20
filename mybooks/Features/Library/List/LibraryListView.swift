@@ -29,6 +29,11 @@ struct LibraryListView: View {
             CreateBookView(shouldPresentSheet: $shouldPresentSheet)
         }
         .padding(.horizontal, 22)
+        .onAppear {
+            Task {
+                await viewModel.fetchBooks()
+            }
+        }
     }
 }
 

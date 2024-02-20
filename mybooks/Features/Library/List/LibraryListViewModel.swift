@@ -13,7 +13,7 @@ class LibraryListViewModel: ObservableObject {
     
     private let repository = LibraryRepository()
     
-    func getBooks() async {
+    func fetchBooks() async {
         await repository.fetchBooks()
     }
 }
