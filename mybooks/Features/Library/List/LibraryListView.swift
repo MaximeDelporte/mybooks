@@ -18,7 +18,9 @@ struct LibraryListView: View {
     var body: some View {
         VStack {
             if let books = viewModel.books {
-                Text("There is \(books.count) books.")
+                ForEach(books) { book in
+                    Text("Title: \(book.title) - \(book.description)")
+                }
             } else {
                 EmptyView(shouldPresentSheet: $shouldPresentSheet)
             }
@@ -29,11 +31,7 @@ struct LibraryListView: View {
             CreateBookView(shouldPresentSheet: $shouldPresentSheet)
         }
         .padding(.horizontal, 22)
-        .onAppear {
-            Task {
-                await viewModel.fetchBooks()
-            }
-        }
+        .onAppear { viewModel.fetchBooks() }
     }
 }
 

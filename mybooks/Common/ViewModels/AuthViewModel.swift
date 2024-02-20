@@ -44,7 +44,12 @@ extension AuthViewModel {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
             
-            let user = User(id: result.user.uid, firstName: "", lastName: "", email: email, books: [])
+            let user = User(
+                id: result.user.uid,
+                firstName: "",
+                lastName: "",
+                email: email
+            )
             self.currentUser = user
             
             let encodedUser = try Firestore.Encoder().encode(user)
