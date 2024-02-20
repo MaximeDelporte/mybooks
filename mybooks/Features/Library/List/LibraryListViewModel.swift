@@ -9,6 +9,11 @@ import Foundation
 
 class LibraryListViewModel: ObservableObject {
     
-    @Published var books = [Book]()
+    @Published var books: [Book]?
     
+    private let repository = LibraryRepository()
+    
+    func getBooks() async {
+        await repository.fetchBooks()
+    }
 }

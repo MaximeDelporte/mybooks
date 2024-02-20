@@ -42,10 +42,14 @@ extension AuthViewModel {
     func signUp(with email: String, and password: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            let user = User(id: result.user.uid, firstName: "", lastName: "", email: email, books: [])
-            let encodedUser = try Firestore.Encoder().encode(user)
-            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             self.userSession = result.user
+            
+            let user = User(id: result.user.uid, firstName: "", lastName: "", email: email, books: [])
+            self.currentUser = user
+            
+            let encodedUser = try Firestore.Encoder().encode(user)
+            
+            try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
         } catch {
             self.signUpErrorString = error.localizedDescription
             print("ERROR - \(error.localizedDescription)")

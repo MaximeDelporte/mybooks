@@ -12,13 +12,21 @@ struct LibraryListView: View {
     
     @Binding var path: NavigationPath
     
-    @ObservedObject var viewModel = LibraryListViewModel()
+    @State private var shouldPresentSheet = false
+    @ObservedObject private var viewModel = LibraryListViewModel()
     
     var body: some View {
         VStack {
-            if viewModel.books.isEmpty {
-                EmptyView()
+            if let books = viewModel.books {
+                Text("There is \(books.count) books.")
+            } else {
+                EmptyView(shouldPresentSheet: $shouldPresentSheet)
             }
+        }
+        .sheet(isPresented: $shouldPresentSheet) {
+            print("Sheet dismissed!")
+        } content: {
+            CreateBookView(shouldPresentSheet: $shouldPresentSheet)
         }
         .padding(.horizontal, 22)
     }
@@ -27,6 +35,8 @@ struct LibraryListView: View {
 // MARK: - Empty State
 
 private struct EmptyView: View {
+    
+    @Binding var shouldPresentSheet: Bool
     
     var body: some View {
         Image("library-home")
@@ -42,8 +52,9 @@ private struct EmptyView: View {
             .font(.system(size: 16, weight: .regular, design: .rounded))
             .foregroundStyle(.primary)
         
-        MBButton(title: "Add Your First Book", style: .secondary, action: {})
-            .padding(.top)
+        MBButton(title: "Add Your First Book", style: .secondary, action: {
+            shouldPresentSheet.toggle()
+        }).padding(.top)
         
         Spacer()
     }
