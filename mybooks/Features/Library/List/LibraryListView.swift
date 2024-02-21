@@ -25,7 +25,7 @@ struct LibraryListView: View {
                 if books.isEmpty {
                     EmptyView(shouldPresentSheet: $shouldPresentSheet)
                 } else {
-                    BookListView(books: books, shouldPresentSheet: $shouldPresentSheet)
+                    ListView(books: books, shouldPresentSheet: $shouldPresentSheet)
                 }
             }
         }
@@ -35,27 +35,6 @@ struct LibraryListView: View {
             CreateBookView(shouldPresentSheet: $shouldPresentSheet)
         }
         .padding(.horizontal, 22)
-    }
-}
-
-// MARK: - Loaded State
-
-private struct BookListView: View {
-    
-    var books: [Book]
-    @Binding var shouldPresentSheet: Bool
-    
-    var body: some View {
-        ForEach(books) { book in
-            Text("Title: \(book.title) - \(book.description)")
-        }
-        
-        Spacer()
-        
-        MBButton(title: "Add A Book", style: .primary, action: {
-            shouldPresentSheet.toggle()
-        })
-        .padding()
     }
 }
 
@@ -84,6 +63,27 @@ private struct EmptyView: View {
         }).padding(.top)
         
         Spacer()
+    }
+}
+
+// MARK: - Loaded State
+
+private struct ListView: View {
+    
+    var books: [Book]
+    @Binding var shouldPresentSheet: Bool
+    
+    var body: some View {
+        ForEach(books) { book in
+            Text("Title: \(book.title) - \(book.description)")
+        }
+        
+        Spacer()
+        
+        MBButton(title: "Add A Book", style: .primary, action: {
+            shouldPresentSheet.toggle()
+        })
+        .padding()
     }
 }
 
