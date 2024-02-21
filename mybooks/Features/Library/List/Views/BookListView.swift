@@ -30,12 +30,14 @@ struct BookListView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.primary)
                             .font(.system(size: 18, weight: .semibold, design: .rounded))
+                            .lineLimit(2)
                         
                         Text(book.description)
                             .multilineTextAlignment(.leading)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .foregroundColor(.gray)
                             .font(.system(size: 14, weight: .regular, design: .rounded))
+                            .lineLimit(4)
                     }
                     .padding(.leading, 8)
                     
@@ -44,7 +46,7 @@ struct BookListView: View {
                 .padding(.top, 12)
             }
         }
-        .padding(.top, 8)
+        .padding(.vertical, 8)
         .scrollIndicators(.hidden)
         .clipped()
         
