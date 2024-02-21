@@ -9,16 +9,23 @@ import Foundation
 
 class LibraryListViewModel: ObservableObject {
     
-    @Published var books: [Book]?
+    enum State {
+        case loading
+        case loaded(books: [Book])
+    }
+    
+    @Published var state: State = .loading
     
     private let repository = LibraryRepository()
     
     func fetchBooks() {
+        state = .loading
+        
         repository.fetchBooks(completion: { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(books):
-                self.books = books
+                self.state = .loaded(books: books)
             case let .failure(error):
                 print("manage error: \(error)")
             }

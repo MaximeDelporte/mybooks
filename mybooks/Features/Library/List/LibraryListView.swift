@@ -17,12 +17,15 @@ struct LibraryListView: View {
     
     var body: some View {
         VStack {
-            if let books = viewModel.books {
-                ForEach(books) { book in
-                    Text("Title: \(book.title) - \(book.description)")
+            switch viewModel.state {
+            case .loading:
+                ProgressView()
+            case .loaded(let books):
+                if books.isEmpty {
+                    EmptyView(shouldPresentSheet: $shouldPresentSheet)
+                } else {
+                    BookListView(books: books, shouldPresentSheet: $shouldPresentSheet)
                 }
-            } else {
-                EmptyView(shouldPresentSheet: $shouldPresentSheet)
             }
         }
         .sheet(isPresented: $shouldPresentSheet) {
@@ -32,6 +35,27 @@ struct LibraryListView: View {
         }
         .padding(.horizontal, 22)
         .onAppear { viewModel.fetchBooks() }
+    }
+}
+
+// MARK: - Loaded State
+
+private struct BookListView: View {
+    
+    var books: [Book]
+    @Binding var shouldPresentSheet: Bool
+    
+    var body: some View {
+        ForEach(books) { book in
+            Text("Title: \(book.title) - \(book.description)")
+        }
+        
+        Spacer()
+        
+        MBButton(title: "Add A Book", style: .primary, action: {
+            shouldPresentSheet.toggle()
+        })
+        .padding()
     }
 }
 
