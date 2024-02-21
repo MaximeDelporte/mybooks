@@ -16,6 +16,8 @@
 		FC33E1912B852F6C004E4F7C /* CreateBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33E1902B852F6C004E4F7C /* CreateBookViewModel.swift */; };
 		FC33E1942B854477004E4F7C /* LibraryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33E1932B854477004E4F7C /* LibraryRepository.swift */; };
 		FC33E1982B85526C004E4F7C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = FC33E1972B85526C004E4F7C /* FirebaseDatabase */; };
+		FC33E1A72B866CCD004E4F7C /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33E1A62B866CCD004E4F7C /* EmptyListView.swift */; };
+		FC33E1A92B866CD6004E4F7C /* BookListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC33E1A82B866CD6004E4F7C /* BookListView.swift */; };
 		FC4D374E2B80F66C000C2D3E /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D374D2B80F66C000C2D3E /* View+.swift */; };
 		FC4D37532B80F9DA000C2D3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = FC4D37522B80F9DA000C2D3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		FC4D37552B80F9DA000C2D3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FC4D37542B80F9DA000C2D3E /* FirebaseAnalyticsSwift */; };
@@ -58,6 +60,8 @@
 		FC33E18D2B852BD7004E4F7C /* CreateBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookView.swift; sourceTree = "<group>"; };
 		FC33E1902B852F6C004E4F7C /* CreateBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookViewModel.swift; sourceTree = "<group>"; };
 		FC33E1932B854477004E4F7C /* LibraryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRepository.swift; sourceTree = "<group>"; };
+		FC33E1A62B866CCD004E4F7C /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		FC33E1A82B866CD6004E4F7C /* BookListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListView.swift; sourceTree = "<group>"; };
 		FC4D374D2B80F66C000C2D3E /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		FC4D375D2B80FCCE000C2D3E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC4D379C2B81D0EB000C2D3E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -187,6 +191,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		FC33E1A52B866CBA004E4F7C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC33E1A62B866CCD004E4F7C /* EmptyListView.swift */,
+				FC33E1A82B866CD6004E4F7C /* BookListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FC4D375C2B80FCBF000C2D3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +225,7 @@
 			children = (
 				FC4D37A02B81D2E6000C2D3E /* LibraryListView.swift */,
 				FC4D37B02B81F723000C2D3E /* LibraryListViewModel.swift */,
+				FC33E1A52B866CBA004E4F7C /* Views */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -367,6 +381,7 @@
 				FC4D37A72B81D33F000C2D3E /* SettingsView.swift in Sources */,
 				FC4D37B12B81F723000C2D3E /* LibraryListViewModel.swift in Sources */,
 				FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */,
+				FC33E1A72B866CCD004E4F7C /* EmptyListView.swift in Sources */,
 				FC4D37A52B81D2FC000C2D3E /* LibraryDetailView.swift in Sources */,
 				FC33E1912B852F6C004E4F7C /* CreateBookViewModel.swift in Sources */,
 				FC4D37A12B81D2E6000C2D3E /* LibraryListView.swift in Sources */,
@@ -381,6 +396,7 @@
 				FC4D379D2B81D0EB000C2D3E /* HomeView.swift in Sources */,
 				FC175B372B80D875007993B2 /* MBTextField.swift in Sources */,
 				FC33E1942B854477004E4F7C /* LibraryRepository.swift in Sources */,
+				FC33E1A92B866CD6004E4F7C /* BookListView.swift in Sources */,
 				FC33E18E2B852BD7004E4F7C /* CreateBookView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
