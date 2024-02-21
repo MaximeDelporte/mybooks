@@ -22,7 +22,7 @@ struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var repository: AuthRepository
     
     var body: some View {
         NavigationStack(path: $path, root: {
@@ -51,7 +51,7 @@ struct LoginView: View {
                         .submitLabel(.next)
                         .padding(.bottom, 18)
                         .onChange(of: email, {
-                            self.viewModel.showLoginError = false
+                            self.repository.showLoginError = false
                         })
                     
                     MBTextField(placeholder: "Password", value: $password, isSecure: true)
@@ -59,14 +59,14 @@ struct LoginView: View {
                         .focused($focusedField, equals: .password)
                         .submitLabel(.join)
                         .onChange(of: password, {
-                            self.viewModel.showLoginError = false
+                            self.repository.showLoginError = false
                         })
                     
                     Text("L'email ou le mot de passe ne sont pas corrects.")
                         .frame(maxWidth: .infinity, alignment: .center)
                         .font(.system(size: 13, weight: .regular, design: .rounded))
                         .foregroundStyle(.red)
-                        .opacity(self.viewModel.showLoginError ? 1 : 0)
+                        .opacity(self.repository.showLoginError ? 1 : 0)
                     
                     Spacer()
                 }
@@ -97,11 +97,11 @@ struct LoginView: View {
             .navigationDestination(for: String.self, destination: { screenName in
                 if screenName == SignUpView.screenName {
                     SignUpView()
-                        .environmentObject(viewModel)
+                        .environmentObject(repository)
                 }
             })
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                self.viewModel.showLoginError = false
+                self.repository.showLoginError = false
             }
         })
     }
@@ -110,12 +110,12 @@ struct LoginView: View {
         if email.isEmpty || password.isEmpty { return }
         hideKeyboard()
         Task {
-            try await self.viewModel.login(with: email, and: password)
+            try await self.repository.login(with: email, and: password)
         }
     }
 }
 
 #Preview {
     LoginView()
-        .environmentObject(AuthViewModel())
+        .environmentObject(AuthRepository())
 }
