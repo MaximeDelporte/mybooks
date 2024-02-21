@@ -10,7 +10,7 @@ import SwiftUI
 
 class CreateBookViewModel: ObservableObject {
     
-    @Published var bookIsSaved: Bool = false
+    @Published var book: Book?
     
     private let repository = LibraryRepository()
     
@@ -22,8 +22,8 @@ class CreateBookViewModel: ObservableObject {
                 guard let self = self else { return }
                 
                 switch result {
-                case .success:
-                    self.bookIsSaved = true
+                case let .success(book):
+                    self.book = book
                 case let .failure(error):
                     print(error)
                 }

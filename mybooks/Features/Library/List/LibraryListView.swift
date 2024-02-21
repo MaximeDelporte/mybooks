@@ -28,18 +28,15 @@ struct LibraryListView: View {
                 }
             }
         }
-        .sheet(isPresented: $shouldPresentSheet) {
-            print("Sheet dismissed!")
-        } content: {
+        .sheet(isPresented: $shouldPresentSheet, content: {
             CreateBookView(
                 shouldPresentSheet: $shouldPresentSheet,
-                completion: { bookIsSaved in
-                    if bookIsSaved == false { return }
-                    viewModel.fetchBooks()
+                completion: { book in
+                    viewModel.add(local: book)
                     shouldPresentSheet.toggle()
                 }
             )
-        }
+        })
         .padding(.horizontal, 22)
     }
 }

@@ -16,6 +16,7 @@ class LibraryListViewModel: ObservableObject {
     
     @Published var state: State = .loading
     
+    private var books = [Book]()
     private let repository = LibraryRepository()
     
     func fetchBooks() {
@@ -25,10 +26,17 @@ class LibraryListViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case let .success(books):
-                self.state = .loaded(books: books.reversed())
+                let sortedBooks = books.sorted { $0.createdAt < $1.createdAt }
+                self.books = sortedBooks
+                self.state = .loaded(books: sortedBooks)
             case let .failure(error):
                 print("manage error: \(error)")
             }
         })
+    }
+    
+    func add(local book: Book) {
+        self.books.append(book)
+        self.state = .loaded(books: self.books)
     }
 }

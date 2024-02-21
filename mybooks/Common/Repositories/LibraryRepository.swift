@@ -16,7 +16,7 @@ class LibraryRepository: ObservableObject {
     @Published private var user: FirebaseAuth.User?
     private let db = Firestore.firestore()
     
-    typealias SaveCompletion = (Result<Void, Error>) -> Void
+    typealias SaveCompletion = (Result<Book, Error>) -> Void
     typealias FetchCompletion = (Result<[Book], Error>) -> Void
     
     init() {
@@ -36,18 +36,28 @@ extension LibraryRepository {
         guard let user = user else { return }
         let ref = db.collection("books").document()
         
+        let now = Date()
+        
         let data: [String: Any] = [
             "id": ref.documentID,
+            "userId": user.uid,
             "title": title,
             "description": description,
-            "userId": user.uid
+            "createdAt": now
         ]
          
         ref.setData(data, completion: { error in
             if let error = error {
                 completion(.failure(error))
             } else {
-                completion(.success(()))
+                let book = Book(
+                    id: ref.documentID,
+                    userId: user.uid,
+                    title: title,
+                    description: description,
+                    createdAt: now
+                )
+                completion(.success(book))
             }
         })
     }

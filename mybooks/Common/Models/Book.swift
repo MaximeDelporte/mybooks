@@ -12,4 +12,5 @@ struct Book: Hashable, Identifiable, Codable {
     let userId: String
     let title: String
     let description: String
+    let createdAt: Date
 }
