@@ -1,5 +1,5 @@
 //
-//  AuthRepository.swift
+//  AuthViewModel.swift
 //  mybooks
 //
 //  Created by Maxime Delporte on 18/02/2024.
@@ -10,7 +10,7 @@ import FirebaseFirestore
 import Foundation
 
 @MainActor
-class AuthRepository: ObservableObject {
+class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
@@ -27,7 +27,7 @@ class AuthRepository: ObservableObject {
 
 // MARK: - Convenience Methods
 
-extension AuthRepository {
+extension AuthViewModel {
     
     func login(with email: String, and password: String) async throws {
         do {

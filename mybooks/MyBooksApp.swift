@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct MyBooksApp: App {
     
-    @StateObject var repository = AuthRepository()
+    @StateObject var viewModel = AuthViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -20,23 +20,23 @@ struct MyBooksApp: App {
     var body: some Scene {
         WindowGroup {
             AuthenticationView()
-                .environmentObject(repository)
+                .environmentObject(viewModel)
         }
     }
 }
 
 fileprivate struct AuthenticationView: View {
     
-    @EnvironmentObject var repository: AuthRepository
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         Group {
-            if repository.userSession != nil {
+            if viewModel.userSession != nil {
                 HomeView()
-                    .environmentObject(repository)
+                    .environmentObject(viewModel)
             } else {
                 LoginView()
-                    .environmentObject(repository)
+                    .environmentObject(viewModel)
             }
         }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var repository: AuthRepository
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct SettingsView: View {
             
             MBButton(title: "Log out", style: .secondary, action: {
                 Task {
-                    repository.signOut()
+                    viewModel.signOut()
                 }
             })
             
@@ -32,5 +32,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .environmentObject(AuthRepository())
+        .environmentObject(AuthViewModel())
 }

@@ -13,8 +13,8 @@ struct HomeView: View {
     @State var tabSelection: Int = 0
     @State var path: NavigationPath = .init()
     
-    @EnvironmentObject var repository: AuthRepository
-    @State var viewModel = LibraryListViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
+    @State var libraryViewModel = LibraryListViewModel()
     
     private let navTitles = ["My Books", "Settings"]
     
@@ -25,7 +25,7 @@ struct HomeView: View {
                     let firstPage = index == 0
                     
                     if firstPage {
-                        LibraryListView(path: $path, viewModel: viewModel)
+                        LibraryListView(path: $path, viewModel: libraryViewModel)
                             .tabItem {
                                 Label(title: {
                                     Text("Library")
@@ -57,12 +57,12 @@ struct HomeView: View {
             UITabBar.appearance().barTintColor = backgroundColor
             UITabBar.appearance().backgroundColor = backgroundColor
             
-            viewModel.fetchBooks()
+            libraryViewModel.fetchBooks()
         }
     }
 }
 
 #Preview {
     HomeView()
-        .environmentObject(AuthRepository())
+        .environmentObject(AuthViewModel())
 }

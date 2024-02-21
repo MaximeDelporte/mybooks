@@ -41,7 +41,7 @@
 		FC4D37A72B81D33F000C2D3E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37A62B81D33F000C2D3E /* SettingsView.swift */; };
 		FC4D37AA2B81D362000C2D3E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37A92B81D362000C2D3E /* Book.swift */; };
 		FC4D37AC2B81DAB9000C2D3E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37AB2B81DAB9000C2D3E /* User.swift */; };
-		FC4D37AF2B81E43E000C2D3E /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37AE2B81E43E000C2D3E /* AuthRepository.swift */; };
+		FC4D37AF2B81E43E000C2D3E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37AE2B81E43E000C2D3E /* AuthViewModel.swift */; };
 		FC4D37B12B81F723000C2D3E /* LibraryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4D37B02B81F723000C2D3E /* LibraryListViewModel.swift */; };
 		FC6150AD2B80C95D0006A700 /* MyBooksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AC2B80C95D0006A700 /* MyBooksApp.swift */; };
 		FC6150AF2B80C95D0006A700 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC6150AE2B80C95D0006A700 /* LoginView.swift */; };
@@ -66,7 +66,7 @@
 		FC4D37A62B81D33F000C2D3E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FC4D37A92B81D362000C2D3E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FC4D37AB2B81DAB9000C2D3E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		FC4D37AE2B81E43E000C2D3E /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		FC4D37AE2B81E43E000C2D3E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		FC4D37B02B81F723000C2D3E /* LibraryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryListViewModel.swift; sourceTree = "<group>"; };
 		FC6150A92B80C95D0006A700 /* mybooks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mybooks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC6150AC2B80C95D0006A700 /* MyBooksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBooksApp.swift; sourceTree = "<group>"; };
@@ -111,6 +111,7 @@
 				FC175B1E2B80D265007993B2 /* Views */,
 				FC33E1952B854621004E4F7C /* Repositories */,
 				FC4D37A82B81D35B000C2D3E /* Models */,
+				FC33E1A42B860B85004E4F7C /* ViewModels */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -166,7 +167,6 @@
 		FC33E1952B854621004E4F7C /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				FC4D37AE2B81E43E000C2D3E /* AuthRepository.swift */,
 				FC33E1932B854477004E4F7C /* LibraryRepository.swift */,
 			);
 			path = Repositories;
@@ -177,6 +177,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC33E1A42B860B85004E4F7C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				FC4D37AE2B81E43E000C2D3E /* AuthViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		FC4D375C2B80FCBF000C2D3E /* Resources */ = {
@@ -364,7 +372,7 @@
 				FC4D37A12B81D2E6000C2D3E /* LibraryListView.swift in Sources */,
 				FC175B352B80D659007993B2 /* UIColor+.swift in Sources */,
 				FC6150AD2B80C95D0006A700 /* MyBooksApp.swift in Sources */,
-				FC4D37AF2B81E43E000C2D3E /* AuthRepository.swift in Sources */,
+				FC4D37AF2B81E43E000C2D3E /* AuthViewModel.swift in Sources */,
 				FC4D37AC2B81DAB9000C2D3E /* User.swift in Sources */,
 				FC175B3E2B80DE39007993B2 /* SignUpView.swift in Sources */,
 				FC4D374E2B80F66C000C2D3E /* View+.swift in Sources */,

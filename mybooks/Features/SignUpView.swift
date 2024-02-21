@@ -19,7 +19,7 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
     
-    @EnvironmentObject var repository: AuthRepository
+    @EnvironmentObject var viewModel: AuthViewModel
     
     // MARK: - Private Properties
     
@@ -32,7 +32,7 @@ struct SignUpView: View {
     }
     
     private var errorMessage: String {
-        repository.signUpErrorString ?? ""
+        viewModel.signUpErrorString ?? ""
     }
     
     var body: some View {
@@ -69,7 +69,7 @@ struct SignUpView: View {
             .padding(.bottom, 16)
         })
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-            repository.signUpErrorString = nil
+            viewModel.signUpErrorString = nil
         }
         .padding(.horizontal, 12)
     }
@@ -78,12 +78,12 @@ struct SignUpView: View {
         if signUpButtonIsDisabled { return }
         hideKeyboard()
         Task {
-            try await repository.signUp(with: email, and: password)
+            try await viewModel.signUp(with: email, and: password)
         }
     }
 }
 
 #Preview {
     SignUpView()
-        .environmentObject(AuthRepository())
+        .environmentObject(AuthViewModel())
 }
