@@ -11,12 +11,13 @@ import SwiftUI
 struct LibraryListView: View {
     
     @Binding var path: NavigationPath
+    @ObservedObject var viewModel: LibraryListViewModel
     
     @State private var shouldPresentSheet = false
-    @ObservedObject private var viewModel = LibraryListViewModel()
     
     var body: some View {
         VStack {
+            let _ = print("VIEWMODEL STATE: \(viewModel.state)")
             switch viewModel.state {
             case .loading:
                 ProgressView()
@@ -34,7 +35,6 @@ struct LibraryListView: View {
             CreateBookView(shouldPresentSheet: $shouldPresentSheet)
         }
         .padding(.horizontal, 22)
-        .onAppear { viewModel.fetchBooks() }
     }
 }
 
@@ -88,6 +88,7 @@ private struct EmptyView: View {
 }
 
 #Preview {
+    @State var viewModel = LibraryListViewModel()
     @State var path: NavigationPath = .init()
-    return LibraryListView(path: $path)
+    return LibraryListView(path: $path, viewModel: viewModel)
 }

@@ -14,6 +14,7 @@ struct HomeView: View {
     @State var path: NavigationPath = .init()
     
     @EnvironmentObject var viewModel: AuthViewModel
+    @State var libraryViewModel = LibraryListViewModel()
     
     private let navTitles = ["My Books", "Settings"]
     
@@ -24,7 +25,7 @@ struct HomeView: View {
                     let firstPage = index == 0
                     
                     if firstPage {
-                        LibraryListView(path: $path)
+                        LibraryListView(path: $path, viewModel: libraryViewModel)
                             .tabItem {
                                 Label(title: {
                                     Text("Library")
@@ -51,10 +52,12 @@ struct HomeView: View {
                 LibraryDetailView(book: book)
             })
         }
-        .onAppear() {
+        .onAppear {
             let backgroundColor = UIColor.white
             UITabBar.appearance().barTintColor = backgroundColor
             UITabBar.appearance().backgroundColor = backgroundColor
+            
+            libraryViewModel.fetchBooks()
         }
     }
 }
