@@ -25,7 +25,7 @@ class LibraryListViewModel: ObservableObject {
             guard let self = self else { return }
             switch result {
             case let .success(books):
-                self.state = .loaded(books: books)
+                self.state = .loaded(books: books.reversed())
             case let .failure(error):
                 print("manage error: \(error)")
             }

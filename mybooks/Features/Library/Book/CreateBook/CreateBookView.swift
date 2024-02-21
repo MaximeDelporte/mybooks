@@ -11,6 +11,7 @@ import SwiftUI
 struct CreateBookView: View {
     
     @Binding var shouldPresentSheet: Bool
+    var completion: ((Bool) -> Void)
     
     @State var title: String = ""
     @State var description: String = ""
@@ -55,7 +56,7 @@ struct CreateBookView: View {
         }
         .padding(.horizontal, 22)
         .onChange(of: viewModel.bookIsSaved, {
-            shouldPresentSheet.toggle()
+            completion(viewModel.bookIsSaved)
         })
     }
     
@@ -66,5 +67,9 @@ struct CreateBookView: View {
 
 #Preview {
     @State var shouldPresentSheet = true
-    return CreateBookView(shouldPresentSheet: $shouldPresentSheet)
+    
+    return CreateBookView(
+        shouldPresentSheet: $shouldPresentSheet,
+        completion: { _ in }
+    )
 }

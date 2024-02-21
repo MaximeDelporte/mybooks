@@ -17,7 +17,6 @@ struct LibraryListView: View {
     
     var body: some View {
         VStack {
-            let _ = print("VIEWMODEL STATE: \(viewModel.state)")
             switch viewModel.state {
             case .loading:
                 ProgressView()
@@ -32,7 +31,14 @@ struct LibraryListView: View {
         .sheet(isPresented: $shouldPresentSheet) {
             print("Sheet dismissed!")
         } content: {
-            CreateBookView(shouldPresentSheet: $shouldPresentSheet)
+            CreateBookView(
+                shouldPresentSheet: $shouldPresentSheet,
+                completion: { bookIsSaved in
+                    if bookIsSaved == false { return }
+                    viewModel.fetchBooks()
+                    shouldPresentSheet.toggle()
+                }
+            )
         }
         .padding(.horizontal, 22)
     }
